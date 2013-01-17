@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Ember Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -27,36 +27,71 @@
 </head>
 
 <body>
+<script type="text/x-handlebars" data-template-name="application">
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Project name</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+    <!-- MENU -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">Project name</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/main">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    {{#if CT.router.authController.auth}}
+                    <ul class="nav pull-right">
+                         <li><a href="#" {{action logout target="CT.router.authController"}}>Logout</a></li>
+                    </ul>
+                    {{/if}}
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
-</div>
 
+    {{outlet}}
+</script>
 
-<script type="text/x-handlebars" data-template-name="application">
+<!-- LOGIN TEMPLATE -->
+<script type="text/x-handlebars" data-template-name="login">
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="login-form span5 offset4">
+                    <h2>Login</h2>
+                    <form action="">
+                        <fieldset>
+                            <div class="clearfix">
+                                <input type="text" placeholder="Username">
+                            </div>
+                            <div class="clearfix">
+                                <input type="password" placeholder="Password">
+                            </div>
+                            <button class="btn btn-primary" type="submit" {{action login target="view"}}>Sign in</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+</script>
+
+<script type="text/x-handlebars" data-template-name="main">
+
+    <!-- MAIN CONTAINER -->
     <div class="container">
         <div class="row">
-        <div class="span1"><i class="icon-4x icon-thumbs-up"></i></div>
-        <div class="span11">
-            <h1>Ember.js bootstrap starter template</h1>
-            <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-        </div>
+            <div class="span1"><i class="icon-4x icon-thumbs-up"></i></div>
+            <div class="span11">
+                <h1>Ember.js bootstrap starter template</h1>
+                <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+            </div>
         </div>
     </div> <!-- /container -->
 </script>
@@ -71,7 +106,7 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.3.min.js"><\/script>')</script>
 <script src="js/libs/bootstrap.min.js"></script>
 <script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
-<script src="js/libs/ember-1.0.0-pre.2.min.js"></script>
+<script src="js/libs/ember-1.0.0-pre.2.js"></script>
 <script src="js/app.js"></script>
 
 </body>
