@@ -7,23 +7,6 @@ var App = Em.Application.create({
 /*      MODEL                  */
 /*******************************/
 
-App.Property = Em.Object.extend({
-    id: null,
-    name: null,
-    desc: null,
-    domains: []
-});
-
-App.Domain = Em.Object.extend({
-    id: null,
-    instances: []
-});
-
-App.Instance = Em.Object.extend({
-    id: null,
-    value: null,
-    lastUpdated: null
-});
 
 
 /*******************************/
